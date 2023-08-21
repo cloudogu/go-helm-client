@@ -90,6 +90,8 @@ type HelmClient struct {
 type GenericHelmOptions struct {
 	PostRenderer postrender.PostRenderer
 	RollBack     RollBack
+	// PlainHttp forces use of plain HTTP for communication with the helm registry.
+	PlainHttp bool
 }
 
 type HelmTemplateOptions struct {
