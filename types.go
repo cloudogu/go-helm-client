@@ -42,6 +42,8 @@ type Options struct {
 	DebugLog         action.DebugLog
 	RegistryConfig   string
 	Output           io.Writer
+	// PlainHttp forces the registry client to establish plain http connections.
+	PlainHttp bool
 }
 
 // RESTClientOption is a function that can be used to set the RESTClientOptions of a HelmClient.

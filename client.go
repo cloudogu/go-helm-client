@@ -104,10 +104,16 @@ func newClient(options *Options, clientGetter genericclioptions.RESTClientGetter
 		return nil, err
 	}
 
-	registryClient, err := registry.NewClient(
+	clientOpts := []registry.ClientOption{
 		registry.ClientOptDebug(settings.Debug),
 		registry.ClientOptCredentialsFile(settings.RegistryConfig),
-	)
+	}
+
+	if options.PlainHttp {
+		clientOpts = append(clientOpts, registry.ClientOptPlainHTTP())
+	}
+
+	registryClient, err := registry.NewClient(clientOpts...)
 	if err != nil {
 		return nil, err
 	}
